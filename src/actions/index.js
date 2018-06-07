@@ -5,14 +5,14 @@ const ROOT_URL = 'https://bottega-property-management.herokuapp.com'
 
 export function signinUser({email, password}) {
     return function(dispatch) {
-        axios.post(`${ROOT_URL}/signin`, { email, password} )
+        axios.post(`${ROOT_URL}/signin`, { email, password } )
         .then(response => {
-            console.log(response.data.token);
+            localStorage.setItem('token', response.data.token)
 
             history.push('./newsletter');
         })
         .catch(error => {
-            consoel.log(error);
+            console.log(error);
         })
     }
 }
